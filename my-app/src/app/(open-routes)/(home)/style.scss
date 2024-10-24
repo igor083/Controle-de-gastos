@@ -1,0 +1,70 @@
+@import '../../globals.scss';
+
+
+h1 span{
+   color: $primary-color;
+   font-weight: bold;
+   font-size: 110%;
+}
+.container{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+}
+//parte logo
+.flex{
+   display: flex;
+   align-items: center;
+   text-align: center;
+   line-height: 1.9em;
+   p{
+      font-size: 2em;
+      font-weight: 900;
+   }
+   span{
+      
+      color: $primary-color;
+   }
+}
+
+.welcome{
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   h1{
+      margin-top: 0;
+   }  
+}
+
+//parte texto 1
+
+.text1{
+   margin: 0 5rem 0 5rem;
+   text-align: center;
+   font-family: $poppins;
+   font-size: 1.2em;
+   width: 36rem;
+}
+
+//parte texto 2
+.mid-text{
+   
+   p{
+      text-align: center;
+      font-size: 1.5em;
+   }
+   span{
+      color: $primary-color;
+      font-weight: 900;
+   }
+}
+.buttons{
+   margin-top: 1rem;
+   display: grid;
+}
+.mention{
+   text-align: center;
+   color: $grey;
+}

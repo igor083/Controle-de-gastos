@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+// Definição de variáveis de cores
+$primary-color: #4C0ECD;
+$grey: #616161;
+$green: #333;
+$background-color: #f5f5f5;
+$poppins: 'Poppins', sans-serif;
+// Outros estilos globais que você desejar
+body{
+   background-color: #fff;
+   font-family: $poppins;
+   
+   margin: 0;
+   justify-content: center;
+   min-height: 100vh;
+   min-width: 100vh;
+   
+}
+
