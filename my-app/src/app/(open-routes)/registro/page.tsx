@@ -19,7 +19,7 @@ export default function registro() {
             <input type="text" placeholder=" Nome"/>
             <input type="text" placeholder=" Email"/>
             <input type="password" placeholder=" Password" />
-            <Button text= {"Crie sua conta!"} href="/"/>//AJEITAR FUNÇÃO
+            <Button text= {"Crie sua conta!"} href="/"/>
          </div>
          <div className="footer">
             <p>Já possui uma conta?</p>
