@@ -1,0 +1,22 @@
+@use '../../app/globals' as *;
+button {
+    align-items: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    background-color: $primary-color;
+    font-family: $poppins;
+    color: white;
+    
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: #fff;
+    width: 4rem;
+    height: 2rem;
+    margin: 5px 10px 0 0;
+    &:hover {
+      background-color: darken($primary-color, 10%); // Escurece a cor primária em 10%
+      transform: scale(1.02); // Aumenta ligeiramente o tamanho do botão
+    }
+  }

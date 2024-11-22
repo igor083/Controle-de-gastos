@@ -1,1 +1,31 @@
 @use '../../app/globals' as *;
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    
+}
+.options{
+    display: flex;
+    justify-content:flex-end;
+    gap: 30px;
+    align-items: center;
+    padding-right: 10px;
+    
+}
+
+.options .neutro{
+    background-color: white;
+    color: #516778;
+    border: none;
+    width: 60px;
+    height: 30px;
+    margin: 5px 10px 0 0;
+}
+.options button{ 
+    width: 6rem;
+    font-size: 1.1rem;
+}
+button{font-size: 0.9rem;}

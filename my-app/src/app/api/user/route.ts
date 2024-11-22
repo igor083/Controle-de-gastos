@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   }
 
   try {
-    const user = db.prepare("SELECT id, name, email FROM usuarios WHERE id = ?").get(userId);
+    const user = db.prepare("SELECT id, name, email, banca FROM usuarios WHERE id = ?").get(userId);
 
     if (!user) {
       return NextResponse.json({ error: "Usuário não encontrado" }, { status: 404 });

@@ -11,13 +11,13 @@ CREATE TABLE IF NOT EXISTS tipos_gasto (
     id_usuario INTEGER NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
   );
-  
+  DROP TABLE gastos
 CREATE TABLE IF NOT EXISTS gastos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     valor REAL NOT NULL,
     data TEXT NOT NULL,
     descricao TEXT NOT NULL,
-    id_tipo_gasto INTEGER NOT NULL,
+    id_tipo_gasto INTEGER ,
     id_usuario INTEGER NOT NULL,
     FOREIGN KEY (id_tipo_gasto) REFERENCES tipos_gasto(id) ON DELETE CASCADE,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
@@ -40,7 +40,7 @@ PRAGMA foreign_key_list(gastos);
 SELECT * FROM usuarios WHERE id = 1;
 
 INSERT INTO tipos_gasto (name_tipo_gasto, id_usuario) 
-VALUES ('Alimentação', 1);
+VALUES ('Pix', );
 
 ALTER TABLE usuarios
  ADD COLUMN banca INTEGER DEFAULT 0; 

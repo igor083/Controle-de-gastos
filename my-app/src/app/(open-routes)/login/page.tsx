@@ -24,14 +24,17 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        console.log( response)
+        
         const data = await response.json();
         console.log("Login successful:", data.message);
         
         // Redireciona para a página do usuário
         const userId = data.id; // Pega o ID do usuário retornado
-        console.log("este deveria ser o id" + userId)
+        
+        console.log("este deveria ser o id:" + userId);
+        console.log("Era pra executar");
         router.push(`/user/${userId}`); // Redireciona para o painel do usuário
+        console.log("Aqui ja passou");
       } else {
         const errorData = await response.json();
         setError(errorData.error || "Login failed");

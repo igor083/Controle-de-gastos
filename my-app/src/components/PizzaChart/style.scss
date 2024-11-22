@@ -1,0 +1,10 @@
+@use '../../app/globals' as *;
+.container{
+    width: 300px;
+    height: 300px;
+}
+canvas{
+    padding: 0;
+    aspect-ratio: auto 4/3;
+   
+}

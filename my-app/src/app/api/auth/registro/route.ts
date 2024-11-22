@@ -22,8 +22,8 @@ export async function POST(req: Request) {
     }
 
     // Inserindo o novo usuário no banco de dados
-    const result = db.prepare("INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)").run(name, email, password);
-
+    const result = db.prepare("INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?); ").run(name, email, password);
+    
     // Retornando o usuário criado
     return NextResponse.json({
       id: result.lastInsertRowid,

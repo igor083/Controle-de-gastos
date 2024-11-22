@@ -31,3 +31,57 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+
+export async function GET(req: Request) {//listar tipos de gasto
+  const { searchParams } = new URL(req.url);
+  const userId = searchParams.get("userId");
+
+  if (!userId) {
+    return NextResponse.json({ error: "ID do usuário não fornecido" }, { status: 400 });
+  }
+
+  try {
+    const tiposGasto = db
+      .prepare("SELECT id , name_tipo_gasto FROM tipos_gasto WHERE id_usuario = ?")
+      .all(userId);
+
+    if (tiposGasto.length === 0) {
+      return NextResponse.json({ message: "Nenhum tipo de gasto encontrado." });
+    }
+
+    return NextResponse.json(tiposGasto);
+  } catch (error: any) {
+    console.error("Erro ao buscar tipos de gasto:", error.message);
+    return NextResponse.json({ error: "Erro interno do servidor." }, { status: 500 });
+  }
+}
+// deleta o tipo
+export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+  const gastoId = params.id;
+
+  if (!gastoId) {
+    return NextResponse.json({ error: "ID do tipo de gasto não fornecido" }, { status: 400 });
+  }
+
+  try {
+    // Verifica se o tipo de gasto existe
+    const tipoGasto = db.prepare("SELECT * FROM tipos_gasto WHERE id = ?").get(gastoId);
+
+    if (!tipoGasto) {
+      return NextResponse.json({ error: "Tipo de gasto não encontrado" }, { status: 404 });
+    }
+
+    // Exclui o tipo de gasto
+    db.prepare("DELETE FROM tipos_gasto WHERE id = ?").run(gastoId);
+
+    return NextResponse.json({ message: "Tipo de gasto excluído com sucesso" });
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error("Erro ao excluir tipo de gasto:", error.message);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    } else {
+      console.error("Erro desconhecido:", error);
+      return NextResponse.json({ error: "Erro desconhecido." }, { status: 500 });
+    }
+  }
+}
