@@ -1,4 +1,4 @@
-@import '../../globals.scss';
+@use '../../globals' as *;
 .container{
    min-width: 100vh;
    align-items: center;

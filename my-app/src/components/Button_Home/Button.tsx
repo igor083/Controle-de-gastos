@@ -6,11 +6,12 @@ import './style.scss';
 
 interface ButtonProps {
   text: string;
+  type?: "button" | "submit" | "reset";
   href?: string; // URL opcional para redirecionamento
   onClick?: () => void; // Função opcional para ação personalizada
 }
 
-const Button: React.FC<ButtonProps> = ({ text, href, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ text, href, onClick,type="button" }) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -23,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({ text, href, onClick }) => {
   };
 
   return (
-    <button onClick={handleClick}>
+    <button onClick={handleClick} type={type}>
       {text}
     </button>
   );

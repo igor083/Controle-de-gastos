@@ -41,3 +41,6 @@ SELECT * FROM usuarios WHERE id = 1;
 
 INSERT INTO tipos_gasto (name_tipo_gasto, id_usuario) 
 VALUES ('Alimentação', 1);
+
+ALTER TABLE usuarios
+ ADD COLUMN banca INTEGER DEFAULT 0; 

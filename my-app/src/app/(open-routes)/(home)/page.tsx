@@ -22,7 +22,7 @@ export default function Home() {
          </div>
 
          <div className='text1'>
-            <p>Transforme a maneira como você gerencia suas finanças. Com nossa plataforma intuitiva de controle de gastos,<br /> você terá total <b>controle</b> sobre seu orçamento, <b>monitorando despesas, categorizando seus gastos e visualizando relatórios .</b> Alcançar seus objetivos financeiros nunca foi tão fácil. </p>
+            <p>Transforme a maneira como você gerencia suas finanças. Com nossa plataforma intuitiva de controle de gastos.Alcançar seus objetivos financeiros nunca foi tão fácil. </p>
          </div>
          <div className="mid-text">
             <p><b>Simplifique</b> sua vida e tome decisões mais <br /><b>inteligentes</b> para o futuro</p>

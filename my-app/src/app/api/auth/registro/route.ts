@@ -1,12 +1,8 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
+import { User } from "@/app/types/User";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-}
+
 
 export async function POST(req: Request) {
   try {

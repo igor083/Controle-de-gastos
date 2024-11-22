@@ -5,43 +5,27 @@ interface User {
   id: number;
   name: string;
   email: string;
-  password
-  : string;
+  password: string;
 }
 
 export async function POST(req: Request) {
-  const { email, password
-
-   } = await req.json();
-
-  if (!email || !password
-
-  ) {
-    return NextResponse.json({ error: "Missing fields" }, { status: 400 });
-  }
-
   try {
-    // Consulta no banco de dados
+    const { email, password } = await req.json();
+
+    if (!email || !password) {
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+    }
+
+    // Tipando explicitamente o retorno do banco de dados como `User | undefined`
     const user = db.prepare("SELECT * FROM usuarios WHERE email = ?").get(email) as User | undefined;
 
-    // Verifica se o usuário existe e se a password está correta
-    if (!user || user.password
-         !== password
-
-    ) {
+    if (!user || user.password !== password) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    const response = NextResponse.json({ message: "Login successful" });
-    response.cookies.set("session", String(user.id), {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60 * 24, // 1 dia
-    });
-
-    return response;
+    return NextResponse.json({ message: "Login successful", id: user.id });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Database error" }, { status: 500 });
+    console.error("Erro interno do servidor:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
