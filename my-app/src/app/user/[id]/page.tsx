@@ -25,9 +25,9 @@ interface Gasto {
 }
 
 export default function UserPage() {
-  const { id } = useParams();  // Agora usamos useParams() para pegar o id
+  const { id } = useParams();  
   const [user, setUser] = useState<User | null>(null);
-  const [gastos, setGastos] = useState<Gasto[]>([]);  // Novo estado para armazenar os gastos
+  const [gastos, setGastos] = useState<Gasto[]>([]);  
 
   // Função para buscar os dados do usuário
   useEffect(() => {
