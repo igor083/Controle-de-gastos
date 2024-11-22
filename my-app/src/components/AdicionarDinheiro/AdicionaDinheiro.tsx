@@ -26,7 +26,7 @@ export default function AdicionaDinheiro({ userId }: { userId: number }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          valor,  // Alterado para 'quantia'
+          valor,  
           descricao,
           data,
           id_usuario: userId,

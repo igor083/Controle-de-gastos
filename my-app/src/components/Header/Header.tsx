@@ -14,12 +14,12 @@ const Header: React.FC<HeaderProps> = ({ userId }) => {
   return (
     <header>
       <div className="logo">
-        <Image
+        <Link href={`/user/${userId}`}><Image
           src="/MeuDin_pequeno.png"
           width={120}
           height={60}
           alt="Logo Meu Din"
-        />
+        /></Link>
       </div>
       <div className="options">
    

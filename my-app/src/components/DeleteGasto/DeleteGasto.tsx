@@ -13,11 +13,12 @@ export default function DeleteGasto({ userId }: { userId: number }) {
         const response = await fetch(`/api/gastos?id_usuario=${userId}`);
         if (response.ok) {
           const data = await response.json();
-          // Verifique se a resposta é realmente um array
-          if (Array.isArray(data)) {
-            setGastos(data);
+          // Filtra os gastos para garantir que apenas aqueles com id_tipo_gasto não nulo sejam exibidos
+          const gastosComTipoValido = data.filter((gasto: any) => gasto.id_tipo_gasto != null);
+          if (Array.isArray(gastosComTipoValido)) {
+            setGastos(gastosComTipoValido);
           } else {
-            setError("");
+            setError("Nenhum gasto válido encontrado.");
           }
         } else {
           const errorData = await response.json();
@@ -81,24 +82,20 @@ export default function DeleteGasto({ userId }: { userId: number }) {
             borderRadius: "4px",
             border: "1px solid #ccc",
             marginBottom: "10px",
-            
           }}
         >
           <option value="" disabled>
             -- Selecione --
           </option>
-          {Array.isArray(gastos) && gastos.length > 0 ? (
+          {gastos.length > 0 ? (
             gastos.map((gasto) => (
-              <option key={gasto.id} value={gasto.id}style={{
-                fontSize:"1rem"
-                
-              }} >
+              <option key={gasto.id} value={gasto.id} style={{ fontSize: "1rem" }}>
                 {`${gasto.descricao} - R$${gasto.valor} - ${gasto.data}`}
               </option>
             ))
           ) : (
             <option value="" disabled>
-              Nenhum gasto encontrado.
+              Nenhum gasto válido encontrado.
             </option>
           )}
         </select>
@@ -113,8 +110,8 @@ export default function DeleteGasto({ userId }: { userId: number }) {
           border: "none",
           borderRadius: "4px",
           cursor: "pointer",
-          width:"8rem",
-          height:"3rem",
+          width: "8rem",
+          height: "3rem",
         }}
       >
         Excluir

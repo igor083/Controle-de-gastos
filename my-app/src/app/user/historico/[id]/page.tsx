@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";  // Alteração aqui para usar useParams
 import Link from "next/link";
+import Header from "@/components/Header/Header";
 
 interface Transferencia {
+  id_tipo_gasto: null;
   id: number;
   valor: number;
   descricao: string;
@@ -71,8 +73,9 @@ const HistoricoPage = () => {
     }
   };
 
-  return (
+  return (  
     <div style={{ padding: "20px" }}>
+        <Header userId={Number(id)}/>
       <h1>Histórico de Transferências</h1>
       <div>
         <label style={{ paddingRight: "4px" }}>Data Inicial:</label>
@@ -111,7 +114,8 @@ const HistoricoPage = () => {
                   style={{
                     border: "1px solid #ccc",
                     padding: "8px",
-                    color: transferencia.valor < 0 ? "red" : "green",
+                    // Lógica para alterar a cor do valor baseado em id_tipo_gasto
+                    color: transferencia.id_tipo_gasto === null ? "green" : "red",
                     fontWeight: "bold",
                   }}
                 >
@@ -134,6 +138,6 @@ const HistoricoPage = () => {
       <Link href={`/user/${id}`}>Voltar para Home</Link>
     </div>
   );
-};
-
+  
+}
 export default HistoricoPage;
